@@ -17,19 +17,30 @@
 package com.example.android.dagger.di
 
 import android.content.Context
-import com.example.android.dagger.login.LoginComponent
-import com.example.android.dagger.registration.RegistrationComponent
+import com.example.android.dagger.login.di.LoginActivityInjectorModule
+import com.example.android.dagger.registration.di.RegistrationActivityInjectorModule
 import com.example.android.dagger.user.UserManager
 import dagger.BindsInstance
 import dagger.Component
+import dagger.android.AndroidInjectionModule
+import dagger.android.AndroidInjector
+import dagger.android.DaggerApplication
 import javax.inject.Singleton
 
 // Scope annotation that the AppComponent uses
 // Classes annotated with @Singleton will have a unique instance in this Component
 @Singleton
 // Definition of a Dagger component that adds info from the different modules to the graph
-@Component(modules = [StorageModule::class, AppSubcomponents::class])
-interface AppComponent {
+@Component(
+    modules = [
+        AndroidInjectionModule::class, // to ensure that all bindings necessary for these base types are available.
+        LoginActivityInjectorModule::class, // add it to the component that injects your Application.
+        RegistrationActivityInjectorModule::class,
+        StorageModule::class,
+        AppSubcomponents::class,
+    ]
+)
+interface AppComponent: AndroidInjector<DaggerApplication> {
 
     // Factory to create instances of the AppComponent
     @Component.Factory
@@ -39,7 +50,5 @@ interface AppComponent {
     }
 
     // Types that can be retrieved from the graph
-    fun registrationComponent(): RegistrationComponent.Factory
-    fun loginComponent(): LoginComponent.Factory
     fun userManager(): UserManager
 }
