@@ -17,7 +17,6 @@
 package com.example.android.dagger.di
 
 import android.content.Context
-import com.example.android.dagger.user.UserManager
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjectionModule
@@ -34,7 +33,6 @@ import javax.inject.Singleton
         AndroidInjectionModule::class, // to ensure that all bindings necessary for these base types are available.
         ActivityModule::class,
         StorageModule::class,
-        AppSubcomponents::class,
     ]
 )
 interface AppComponent: AndroidInjector<DaggerApplication> {
@@ -45,7 +43,4 @@ interface AppComponent: AndroidInjector<DaggerApplication> {
         // With @BindsInstance, the Context passed in will be available in the graph
         fun create(@BindsInstance context: Context): AppComponent
     }
-
-    // Types that can be retrieved from the graph
-    fun userManager(): UserManager
 }
