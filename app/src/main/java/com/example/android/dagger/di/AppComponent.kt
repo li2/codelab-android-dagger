@@ -17,8 +17,6 @@
 package com.example.android.dagger.di
 
 import android.content.Context
-import com.example.android.dagger.login.di.LoginActivityInjectorModule
-import com.example.android.dagger.registration.di.RegistrationActivityInjectorModule
 import com.example.android.dagger.user.UserManager
 import dagger.BindsInstance
 import dagger.Component
@@ -34,8 +32,7 @@ import javax.inject.Singleton
 @Component(
     modules = [
         AndroidInjectionModule::class, // to ensure that all bindings necessary for these base types are available.
-        LoginActivityInjectorModule::class, // add it to the component that injects your Application.
-        RegistrationActivityInjectorModule::class,
+        ActivityModule::class,
         StorageModule::class,
         AppSubcomponents::class,
     ]
