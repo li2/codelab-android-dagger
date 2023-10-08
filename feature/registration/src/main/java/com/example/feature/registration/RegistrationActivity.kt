@@ -14,14 +14,12 @@
  * limitations under the License.
  */
 
-package com.example.android.dagger.registration
+package com.example.feature.registration
 
 import android.content.Intent
 import android.os.Bundle
-import com.example.android.dagger.R
-import com.example.android.dagger.main.MainActivity
-import com.example.android.dagger.registration.enterdetails.EnterDetailsFragment
-import com.example.android.dagger.registration.termsandconditions.TermsAndConditionsFragment
+import com.example.feature.registration.enterdetails.EnterDetailsFragment
+import com.example.feature.registration.termsandconditions.TermsAndConditionsFragment
 import dagger.android.support.DaggerAppCompatActivity
 import javax.inject.Inject
 
@@ -55,7 +53,7 @@ class RegistrationActivity : DaggerAppCompatActivity() {
      */
     fun onTermsAndConditionsAccepted() {
         registrationViewModel.registerUser()
-        startActivity(Intent(this, MainActivity::class.java))
+        startActivity(Intent(this, Class.forName("com.example.android.dagger.main.MainActivity")))
         finish()
     }
 

@@ -22,9 +22,9 @@ import android.widget.Button
 import android.widget.TextView
 import com.example.android.dagger.R
 import com.example.android.dagger.login.LoginActivity
-import com.example.android.dagger.registration.RegistrationActivity
 import com.example.android.dagger.settings.SettingsActivity
 import com.example.core.common.user.UserManager
+import com.example.feature.registration.RegistrationActivity
 import dagger.android.support.DaggerAppCompatActivity
 import javax.inject.Inject
 

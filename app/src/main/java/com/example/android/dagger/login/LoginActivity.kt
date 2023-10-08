@@ -26,7 +26,7 @@ import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.Observer
 import com.example.android.dagger.R
 import com.example.android.dagger.main.MainActivity
-import com.example.android.dagger.registration.RegistrationActivity
+import com.example.feature.registration.RegistrationActivity
 import dagger.android.support.DaggerAppCompatActivity
 import javax.inject.Inject
 

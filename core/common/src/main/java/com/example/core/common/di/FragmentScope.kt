@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.android.dagger.di
+package com.example.core.common.di
 
 import javax.inject.Scope
 

@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package com.example.android.dagger.registration
+package com.example.feature.registration
 
-import com.example.android.dagger.di.ActivityScope
+import com.example.core.common.di.ActivityScope
 import com.example.core.common.user.UserManager
 import javax.inject.Inject
 

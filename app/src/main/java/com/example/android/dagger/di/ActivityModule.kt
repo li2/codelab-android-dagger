@@ -2,10 +2,11 @@ package com.example.android.dagger.di
 
 import com.example.android.dagger.login.LoginActivity
 import com.example.android.dagger.main.MainActivity
-import com.example.android.dagger.registration.RegistrationActivity
-import com.example.android.dagger.registration.di.RegistrationFragmentModule
 import com.example.android.dagger.settings.SettingsActivity
 import com.example.android.dagger.user.LoggedUserScope
+import com.example.core.common.di.ActivityScope
+import com.example.feature.registration.RegistrationActivity
+import com.example.feature.registration.di.RegistrationFragmentModule
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 

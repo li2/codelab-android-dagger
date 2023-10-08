@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace 'com.example.feature.registration'
+    namespace 'com.example.feature.login'
     compileSdk 32
 
     defaultConfig {

@@ -17,7 +17,9 @@
 package com.example.android.dagger.registration.enterdetails
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.example.android.dagger.LiveDataTestUtil
+import com.example.feature.registration.enterdetails.EnterDetailsError
+import com.example.feature.registration.enterdetails.EnterDetailsSuccess
+import com.example.feature.registration.enterdetails.EnterDetailsViewModel
 import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Rule

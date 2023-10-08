@@ -17,6 +17,7 @@
 package com.example.android.dagger.registration
 
 import com.example.core.common.user.UserManager
+import com.example.feature.registration.RegistrationViewModel
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mockito.mock

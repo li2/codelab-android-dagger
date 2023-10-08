@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.android.dagger.registration.enterdetails
+package com.example.feature.registration.enterdetails
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -24,9 +24,9 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.core.widget.doOnTextChanged
-import com.example.android.dagger.R
-import com.example.android.dagger.registration.RegistrationActivity
-import com.example.android.dagger.registration.RegistrationViewModel
+import com.example.feature.registration.R
+import com.example.feature.registration.RegistrationActivity
+import com.example.feature.registration.RegistrationViewModel
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 
