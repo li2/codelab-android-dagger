@@ -1,3 +1,4 @@
 include ':app'
 include ':feature:login'
+include ':feature:registration'
 include ':core:common'

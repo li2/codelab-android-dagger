@@ -14,9 +14,18 @@
  * limitations under the License.
  */
 
-package com.example.android.dagger.storage
+package com.example.core.common.di
 
-interface Storage {
-    fun setString(key: String, value: String)
-    fun getString(key: String): String
+import com.example.core.common.storage.FakeStorage
+import com.example.core.common.storage.Storage
+import dagger.Binds
+import dagger.Module
+
+// Overrides StorageModule in android tests
+@Module
+abstract class TestStorageModule {
+
+    // Makes Dagger provide FakeStorage when a Storage type is requested
+    @Binds
+    abstract fun provideStorage(storage: FakeStorage): Storage
 }

@@ -14,9 +14,10 @@
  * limitations under the License.
  */
 
-package com.example.android.dagger.storage
+package com.example.core.common.storage
 
 import android.content.Context
+import com.example.core.common.storage.Storage
 import javax.inject.Inject
 
 // @Inject tells Dagger how to provide instances of this type

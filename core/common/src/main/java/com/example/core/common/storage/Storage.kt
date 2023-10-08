@@ -14,19 +14,9 @@
  * limitations under the License.
  */
 
-package com.example.android.dagger.storage
+package com.example.core.common.storage
 
-import javax.inject.Inject
-
-class FakeStorage @Inject constructor(): Storage {
-
-    private val map = mutableMapOf<String, String>()
-
-    override fun setString(key: String, value: String) {
-        map[key] = value
-    }
-
-    override fun getString(key: String): String {
-        return map[key].orEmpty()
-    }
+interface Storage {
+    fun setString(key: String, value: String)
+    fun getString(key: String): String
 }

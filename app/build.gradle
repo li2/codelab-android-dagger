@@ -36,15 +36,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    sourceSets {
-        String sharedTestDir = 'src/sharedTest/java'
-        test {
-            java.srcDir sharedTestDir
-        }
-        androidTest {
-            java.srcDir sharedTestDir
-        }
-    }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -56,6 +47,8 @@ android {
 
 dependencies {
     implementation(project(":core:common"))
+    implementation(project(":feature:login"))
+    implementation(project(":feature:registration"))
 
     def dagger_version = "2.40.5"
     implementation "androidx.appcompat:appcompat:1.4.1"

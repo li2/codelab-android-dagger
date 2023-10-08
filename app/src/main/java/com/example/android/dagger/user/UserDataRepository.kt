@@ -16,6 +16,7 @@
 
 package com.example.android.dagger.user
 
+import com.example.core.common.user.UserManager
 import javax.inject.Inject
 import kotlin.random.Random
 

@@ -17,7 +17,7 @@
 package com.example.android.dagger.registration
 
 import com.example.android.dagger.di.ActivityScope
-import com.example.android.dagger.user.UserManager
+import com.example.core.common.user.UserManager
 import javax.inject.Inject
 
 /**

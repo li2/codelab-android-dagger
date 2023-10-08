@@ -21,7 +21,7 @@ import android.os.Bundle
 import android.widget.Button
 import com.example.android.dagger.R
 import com.example.android.dagger.login.LoginActivity
-import com.example.android.dagger.user.UserManager
+import com.example.core.common.user.UserManager
 import dagger.android.support.DaggerAppCompatActivity
 import javax.inject.Inject
 

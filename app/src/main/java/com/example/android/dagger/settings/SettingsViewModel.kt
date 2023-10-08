@@ -17,7 +17,7 @@
 package com.example.android.dagger.settings
 
 import com.example.android.dagger.user.UserDataRepository
-import com.example.android.dagger.user.UserManager
+import com.example.core.common.user.UserManager
 import javax.inject.Inject
 
 /**

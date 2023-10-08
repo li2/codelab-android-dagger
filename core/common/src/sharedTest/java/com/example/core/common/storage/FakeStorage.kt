@@ -13,19 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package com.example.core.common.storage
 
-package com.example.android.dagger.di
+import javax.inject.Inject
 
-import com.example.android.dagger.storage.FakeStorage
-import com.example.android.dagger.storage.Storage
-import dagger.Binds
-import dagger.Module
+class FakeStorage @Inject constructor(): Storage {
 
-// Overrides StorageModule in android tests
-@Module
-abstract class TestStorageModule {
+    private val map = mutableMapOf<String, String>()
 
-    // Makes Dagger provide FakeStorage when a Storage type is requested
-    @Binds
-    abstract fun provideStorage(storage: FakeStorage): Storage
+    override fun setString(key: String, value: String) {
+        map[key] = value
+    }
+
+    override fun getString(key: String): String {
+        return map[key].orEmpty()
+    }
 }

@@ -17,6 +17,7 @@
 package com.example.android.dagger.di
 
 import android.content.Context
+import com.example.core.common.di.StorageModule
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjectionModule
