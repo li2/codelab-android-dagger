@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.android.dagger.login
+package com.example.feature.login
 
 import android.content.Intent
 import android.os.Bundle
@@ -24,9 +24,6 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.Observer
-import com.example.android.dagger.R
-import com.example.android.dagger.main.MainActivity
-import com.example.feature.registration.RegistrationActivity
 import dagger.android.support.DaggerAppCompatActivity
 import javax.inject.Inject
 
@@ -45,7 +42,7 @@ class LoginActivity : DaggerAppCompatActivity() {
         loginViewModel.loginState.observe(this, Observer<LoginViewState> { state ->
             when (state) {
                 is LoginSuccess -> {
-                    startActivity(Intent(this, MainActivity::class.java))
+                    startActivity(Intent(this, Class.forName("com.example.android.dagger.main.MainActivity")))
                     finish()
                 }
                 is LoginError -> errorTextView.visibility = View.VISIBLE
@@ -69,7 +66,7 @@ class LoginActivity : DaggerAppCompatActivity() {
         }
         findViewById<Button>(R.id.unregister).setOnClickListener {
             loginViewModel.unregister()
-            val intent = Intent(this, RegistrationActivity::class.java)
+            val intent = Intent(this, Class.forName("com.example.feature.registration.RegistrationActivity"))
             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or
                     Intent.FLAG_ACTIVITY_CLEAR_TASK or
                     Intent.FLAG_ACTIVITY_NEW_TASK

@@ -19,6 +19,9 @@ package com.example.android.dagger.login
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.example.android.dagger.LiveDataTestUtil
 import com.example.core.common.user.UserManager
+import com.example.feature.login.LoginError
+import com.example.feature.login.LoginSuccess
+import com.example.feature.login.LoginViewModel
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Rule

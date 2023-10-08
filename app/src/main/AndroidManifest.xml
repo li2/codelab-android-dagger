@@ -38,11 +38,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".login.LoginActivity"
-            android:exported="false"
-            android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity"/>
-        <activity
             android:name=".settings.SettingsActivity"
             android:exported="false"
             android:screenOrientation="portrait"

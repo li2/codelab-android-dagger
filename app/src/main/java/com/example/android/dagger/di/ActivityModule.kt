@@ -1,20 +1,20 @@
 package com.example.android.dagger.di
 
-import com.example.android.dagger.login.LoginActivity
 import com.example.android.dagger.main.MainActivity
 import com.example.android.dagger.settings.SettingsActivity
 import com.example.android.dagger.user.LoggedUserScope
-import com.example.core.common.di.ActivityScope
+import com.example.feature.login.di.LoginActivityModule
 import com.example.feature.registration.di.RegistrationActivityModule
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
-@Module(includes = [RegistrationActivityModule::class])
+@Module(
+    includes = [
+        RegistrationActivityModule::class,
+        LoginActivityModule::class,
+    ]
+)
 abstract class ActivityModule {
-    @ActivityScope
-    @ContributesAndroidInjector
-    abstract fun loginActivity(): LoginActivity
-
     @LoggedUserScope
     @ContributesAndroidInjector
     abstract fun mainActivity(): MainActivity
