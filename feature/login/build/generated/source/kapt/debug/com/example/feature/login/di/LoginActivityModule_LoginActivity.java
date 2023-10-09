@@ -1,6 +1,7 @@
-package com.example.android.dagger.di;
+package com.example.feature.login.di;
 
-import com.example.android.dagger.login.LoginActivity;
+import com.example.core.common.di.ActivityScope;
+import com.example.feature.login.LoginActivity;
 import dagger.Binds;
 import dagger.Module;
 import dagger.Subcomponent;
@@ -8,9 +9,9 @@ import dagger.android.AndroidInjector;
 import dagger.multibindings.ClassKey;
 import dagger.multibindings.IntoMap;
 
-@Module(subcomponents = ActivityModule_LoginActivity.LoginActivitySubcomponent.class)
-public abstract class ActivityModule_LoginActivity {
-  private ActivityModule_LoginActivity() {}
+@Module(subcomponents = LoginActivityModule_LoginActivity.LoginActivitySubcomponent.class)
+public abstract class LoginActivityModule_LoginActivity {
+  private LoginActivityModule_LoginActivity() {}
 
   @Binds
   @IntoMap

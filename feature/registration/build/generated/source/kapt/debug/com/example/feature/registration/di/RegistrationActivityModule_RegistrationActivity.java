@@ -1,7 +1,7 @@
-package com.example.android.dagger.di;
+package com.example.feature.registration.di;
 
-import com.example.android.dagger.registration.RegistrationActivity;
-import com.example.android.dagger.registration.di.RegistrationFragmentModule;
+import com.example.core.common.di.ActivityScope;
+import com.example.feature.registration.RegistrationActivity;
 import dagger.Binds;
 import dagger.Module;
 import dagger.Subcomponent;
@@ -9,9 +9,12 @@ import dagger.android.AndroidInjector;
 import dagger.multibindings.ClassKey;
 import dagger.multibindings.IntoMap;
 
-@Module(subcomponents = ActivityModule_RegistrationActivity.RegistrationActivitySubcomponent.class)
-public abstract class ActivityModule_RegistrationActivity {
-  private ActivityModule_RegistrationActivity() {}
+@Module(
+  subcomponents =
+      RegistrationActivityModule_RegistrationActivity.RegistrationActivitySubcomponent.class
+)
+public abstract class RegistrationActivityModule_RegistrationActivity {
+  private RegistrationActivityModule_RegistrationActivity() {}
 
   @Binds
   @IntoMap

@@ -2,32 +2,34 @@
 package com.example.android.dagger.di;
 
 import android.content.Context;
-import com.example.android.dagger.login.LoginActivity;
-import com.example.android.dagger.login.LoginActivity_MembersInjector;
-import com.example.android.dagger.login.LoginViewModel;
 import com.example.android.dagger.main.MainActivity;
 import com.example.android.dagger.main.MainActivity_MembersInjector;
 import com.example.android.dagger.main.MainViewModel;
-import com.example.android.dagger.registration.RegistrationActivity;
-import com.example.android.dagger.registration.RegistrationActivity_MembersInjector;
-import com.example.android.dagger.registration.RegistrationViewModel;
-import com.example.android.dagger.registration.RegistrationViewModel_Factory;
-import com.example.android.dagger.registration.di.RegistrationFragmentModule_EnterDetailsFragment;
-import com.example.android.dagger.registration.di.RegistrationFragmentModule_TermsAndConditionsFragment;
-import com.example.android.dagger.registration.enterdetails.EnterDetailsFragment;
-import com.example.android.dagger.registration.enterdetails.EnterDetailsFragment_MembersInjector;
-import com.example.android.dagger.registration.enterdetails.EnterDetailsViewModel;
-import com.example.android.dagger.registration.termsandconditions.TermsAndConditionsFragment;
-import com.example.android.dagger.registration.termsandconditions.TermsAndConditionsFragment_MembersInjector;
 import com.example.android.dagger.settings.SettingsActivity;
 import com.example.android.dagger.settings.SettingsActivity_MembersInjector;
 import com.example.android.dagger.settings.SettingsViewModel;
-import com.example.android.dagger.storage.SharedPreferencesStorage;
-import com.example.android.dagger.storage.SharedPreferencesStorage_Factory;
 import com.example.android.dagger.user.UserDataRepository;
 import com.example.android.dagger.user.UserDataRepository_Factory;
-import com.example.android.dagger.user.UserManager;
-import com.example.android.dagger.user.UserManager_Factory;
+import com.example.core.common.storage.SharedPreferencesStorage;
+import com.example.core.common.storage.SharedPreferencesStorage_Factory;
+import com.example.core.common.user.UserManager;
+import com.example.core.common.user.UserManager_Factory;
+import com.example.feature.login.LoginActivity;
+import com.example.feature.login.LoginActivity_MembersInjector;
+import com.example.feature.login.LoginViewModel;
+import com.example.feature.login.di.LoginActivityModule_LoginActivity;
+import com.example.feature.registration.RegistrationActivity;
+import com.example.feature.registration.RegistrationActivity_MembersInjector;
+import com.example.feature.registration.RegistrationViewModel;
+import com.example.feature.registration.RegistrationViewModel_Factory;
+import com.example.feature.registration.di.RegistrationActivityModule_RegistrationActivity;
+import com.example.feature.registration.di.RegistrationFragmentModule_EnterDetailsFragment;
+import com.example.feature.registration.di.RegistrationFragmentModule_TermsAndConditionsFragment;
+import com.example.feature.registration.enterdetails.EnterDetailsFragment;
+import com.example.feature.registration.enterdetails.EnterDetailsFragment_MembersInjector;
+import com.example.feature.registration.enterdetails.EnterDetailsViewModel;
+import com.example.feature.registration.termsandconditions.TermsAndConditionsFragment;
+import com.example.feature.registration.termsandconditions.TermsAndConditionsFragment_MembersInjector;
 import dagger.android.AndroidInjector;
 import dagger.android.DaggerApplication;
 import dagger.android.DaggerApplication_MembersInjector;
@@ -52,9 +54,9 @@ import javax.inject.Provider;
 public final class DaggerAppComponent implements AppComponent {
   private final DaggerAppComponent appComponent = this;
 
-  private Provider<ActivityModule_RegistrationActivity.RegistrationActivitySubcomponent.Factory> registrationActivitySubcomponentFactoryProvider;
+  private Provider<RegistrationActivityModule_RegistrationActivity.RegistrationActivitySubcomponent.Factory> registrationActivitySubcomponentFactoryProvider;
 
-  private Provider<ActivityModule_LoginActivity.LoginActivitySubcomponent.Factory> loginActivitySubcomponentFactoryProvider;
+  private Provider<LoginActivityModule_LoginActivity.LoginActivitySubcomponent.Factory> loginActivitySubcomponentFactoryProvider;
 
   private Provider<ActivityModule_MainActivity.MainActivitySubcomponent.Factory> mainActivitySubcomponentFactoryProvider;
 
@@ -87,15 +89,16 @@ public final class DaggerAppComponent implements AppComponent {
 
   @SuppressWarnings("unchecked")
   private void initialize(final Context contextParam) {
-    this.registrationActivitySubcomponentFactoryProvider = new Provider<ActivityModule_RegistrationActivity.RegistrationActivitySubcomponent.Factory>() {
+    this.registrationActivitySubcomponentFactoryProvider = new Provider<RegistrationActivityModule_RegistrationActivity.RegistrationActivitySubcomponent.Factory>() {
       @Override
-      public ActivityModule_RegistrationActivity.RegistrationActivitySubcomponent.Factory get() {
+      public RegistrationActivityModule_RegistrationActivity.RegistrationActivitySubcomponent.Factory get(
+          ) {
         return new RegistrationActivitySubcomponentFactory(appComponent);
       }
     };
-    this.loginActivitySubcomponentFactoryProvider = new Provider<ActivityModule_LoginActivity.LoginActivitySubcomponent.Factory>() {
+    this.loginActivitySubcomponentFactoryProvider = new Provider<LoginActivityModule_LoginActivity.LoginActivitySubcomponent.Factory>() {
       @Override
-      public ActivityModule_LoginActivity.LoginActivitySubcomponent.Factory get() {
+      public LoginActivityModule_LoginActivity.LoginActivitySubcomponent.Factory get() {
         return new LoginActivitySubcomponentFactory(appComponent);
       }
     };
@@ -134,7 +137,7 @@ public final class DaggerAppComponent implements AppComponent {
     }
   }
 
-  private static final class RegistrationActivitySubcomponentFactory implements ActivityModule_RegistrationActivity.RegistrationActivitySubcomponent.Factory {
+  private static final class RegistrationActivitySubcomponentFactory implements RegistrationActivityModule_RegistrationActivity.RegistrationActivitySubcomponent.Factory {
     private final DaggerAppComponent appComponent;
 
     private RegistrationActivitySubcomponentFactory(DaggerAppComponent appComponent) {
@@ -142,7 +145,7 @@ public final class DaggerAppComponent implements AppComponent {
     }
 
     @Override
-    public ActivityModule_RegistrationActivity.RegistrationActivitySubcomponent create(
+    public RegistrationActivityModule_RegistrationActivity.RegistrationActivitySubcomponent create(
         RegistrationActivity arg0) {
       Preconditions.checkNotNull(arg0);
       return new RegistrationActivitySubcomponentImpl(appComponent, arg0);
@@ -187,7 +190,7 @@ public final class DaggerAppComponent implements AppComponent {
     }
   }
 
-  private static final class LoginActivitySubcomponentFactory implements ActivityModule_LoginActivity.LoginActivitySubcomponent.Factory {
+  private static final class LoginActivitySubcomponentFactory implements LoginActivityModule_LoginActivity.LoginActivitySubcomponent.Factory {
     private final DaggerAppComponent appComponent;
 
     private LoginActivitySubcomponentFactory(DaggerAppComponent appComponent) {
@@ -195,7 +198,7 @@ public final class DaggerAppComponent implements AppComponent {
     }
 
     @Override
-    public ActivityModule_LoginActivity.LoginActivitySubcomponent create(LoginActivity arg0) {
+    public LoginActivityModule_LoginActivity.LoginActivitySubcomponent create(LoginActivity arg0) {
       Preconditions.checkNotNull(arg0);
       return new LoginActivitySubcomponentImpl(appComponent, arg0);
     }
@@ -288,7 +291,7 @@ public final class DaggerAppComponent implements AppComponent {
     }
   }
 
-  private static final class RegistrationActivitySubcomponentImpl implements ActivityModule_RegistrationActivity.RegistrationActivitySubcomponent {
+  private static final class RegistrationActivitySubcomponentImpl implements RegistrationActivityModule_RegistrationActivity.RegistrationActivitySubcomponent {
     private final DaggerAppComponent appComponent;
 
     private final RegistrationActivitySubcomponentImpl registrationActivitySubcomponentImpl = this;
@@ -347,7 +350,7 @@ public final class DaggerAppComponent implements AppComponent {
     }
   }
 
-  private static final class LoginActivitySubcomponentImpl implements ActivityModule_LoginActivity.LoginActivitySubcomponent {
+  private static final class LoginActivitySubcomponentImpl implements LoginActivityModule_LoginActivity.LoginActivitySubcomponent {
     private final DaggerAppComponent appComponent;
 
     private final LoginActivitySubcomponentImpl loginActivitySubcomponentImpl = this;

@@ -1,7 +1,7 @@
-package com.example.android.dagger.registration.di;
+package com.example.feature.registration.di;
 
-import com.example.android.dagger.di.FragmentScope;
-import com.example.android.dagger.registration.termsandconditions.TermsAndConditionsFragment;
+import com.example.core.common.di.FragmentScope;
+import com.example.feature.registration.termsandconditions.TermsAndConditionsFragment;
 import dagger.Binds;
 import dagger.Module;
 import dagger.Subcomponent;
