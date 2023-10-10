@@ -17,6 +17,7 @@
 package com.example.android.dagger.user
 
 import javax.inject.Inject
+import javax.inject.Singleton
 import kotlin.random.Random
 
 /**
@@ -25,13 +26,19 @@ import kotlin.random.Random
  * This object will have a unique instance in a Component that is annotated with
  * @LoggedUserScope (i.e. only UserComponent in this case).
  */
-@LoggedUserScope
-class UserDataRepository @Inject constructor(private val userManager: UserManager) {
 
-    val username: String
-        get() = userManager.username
+// Migrate the scoped component to the closest available Hilt component
+// (SingletonComponent in this case) and use nullability when needed.
+// UserDataRepository will be annotated with @Singleton and you'll change the logic
+// to make it null when the user is logged out.
+@Singleton
+class UserDataRepository @Inject constructor() {
 
-    var unreadNotifications: Int
+    var username: String? = null
+        private set
+
+    var unreadNotifications: Int? = null
+        private set
 
     init {
         unreadNotifications = randomInt()
@@ -39,6 +46,16 @@ class UserDataRepository @Inject constructor(private val userManager: UserManage
 
     fun refreshUnreadNotifications() {
         unreadNotifications = randomInt()
+    }
+
+    fun initData(username: String) {
+        this.username = username
+        unreadNotifications = randomInt()
+    }
+
+    fun cleanUp() {
+        username = null
+        unreadNotifications = -1
     }
 }
 

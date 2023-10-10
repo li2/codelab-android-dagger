@@ -16,7 +16,6 @@
 
 package com.example.android.dagger.registration.enterdetails
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -26,12 +25,14 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
+import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import com.example.android.dagger.R
 import com.example.android.dagger.registration.RegistrationActivity
 import com.example.android.dagger.registration.RegistrationViewModel
-import javax.inject.Inject
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class EnterDetailsFragment : Fragment() {
 
     /**
@@ -45,22 +46,12 @@ class EnterDetailsFragment : Fragment() {
      *
      * @Inject annotated fields will be provided by Dagger
      */
-    @Inject
-    lateinit var registrationViewModel: RegistrationViewModel
-
-    @Inject
-    lateinit var enterDetailsViewModel: EnterDetailsViewModel
+    private val registrationViewModel: RegistrationViewModel by activityViewModels()
+    private val enterDetailsViewModel: EnterDetailsViewModel by viewModels()
 
     private lateinit var errorTextView: TextView
     private lateinit var usernameEditText: EditText
     private lateinit var passwordEditText: EditText
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-
-        // Grabs the registrationComponent from the Activity and injects this Fragment
-        (activity as RegistrationActivity).registrationComponent.inject(this)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,

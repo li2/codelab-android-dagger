@@ -20,8 +20,17 @@ import com.example.android.dagger.storage.FakeStorage
 import com.example.android.dagger.storage.Storage
 import dagger.Binds
 import dagger.Module
+import dagger.hilt.components.SingletonComponent
+import dagger.hilt.testing.TestInstallIn
 
-// Overrides StorageModule in android tests
+// use @TestInstallIn annotation to replace the StorageModule with the TestStorageModule.
+// @TestInstallIn annotation takes two parameters,
+// the component(s) this module will be installed in and
+// the module(s) this module is replacing.
+@TestInstallIn(
+    components = [SingletonComponent::class],
+    replaces = [StorageModule::class],
+)
 @Module
 abstract class TestStorageModule {
 
