@@ -18,16 +18,16 @@ package com.example.feature.registration
 
 import android.content.Intent
 import android.os.Bundle
+import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import com.example.feature.registration.enterdetails.EnterDetailsFragment
 import com.example.feature.registration.termsandconditions.TermsAndConditionsFragment
-import dagger.android.support.DaggerAppCompatActivity
-import javax.inject.Inject
+import dagger.hilt.android.AndroidEntryPoint
 
-class RegistrationActivity : DaggerAppCompatActivity() {
+@AndroidEntryPoint
+class RegistrationActivity : AppCompatActivity() {
 
-    // @Inject annotated fields will be provided by Dagger
-    @Inject
-    lateinit var registrationViewModel: RegistrationViewModel
+    private val registrationViewModel: RegistrationViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

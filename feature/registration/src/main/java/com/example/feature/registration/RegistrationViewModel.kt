@@ -16,8 +16,9 @@
 
 package com.example.feature.registration
 
-import com.example.core.common.di.ActivityScope
+import androidx.lifecycle.ViewModel
 import com.example.core.common.user.UserManager
+import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 /**
@@ -27,8 +28,10 @@ import javax.inject.Inject
  * @Inject tells Dagger how to provide instances of this type. Dagger also knows
  * that UserManager is a dependency.
  */
-@ActivityScope
-class RegistrationViewModel @Inject constructor(val userManager: UserManager) {
+@HiltViewModel
+class RegistrationViewModel @Inject constructor(
+    val userManager: UserManager
+): ViewModel() {
 
     private var username: String? = null
     private var password: String? = null

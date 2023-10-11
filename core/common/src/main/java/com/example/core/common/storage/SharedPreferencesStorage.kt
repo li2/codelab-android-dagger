@@ -17,11 +17,13 @@
 package com.example.core.common.storage
 
 import android.content.Context
-import com.example.core.common.storage.Storage
+import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 
 // @Inject tells Dagger how to provide instances of this type
-class SharedPreferencesStorage @Inject constructor(context: Context) : Storage {
+class SharedPreferencesStorage @Inject constructor(
+    @ApplicationContext context: Context
+) : Storage {
 
     private val sharedPreferences = context.getSharedPreferences("Dagger", Context.MODE_PRIVATE)
 

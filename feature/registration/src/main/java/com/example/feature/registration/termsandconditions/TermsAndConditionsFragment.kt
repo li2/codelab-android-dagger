@@ -21,17 +21,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import com.example.feature.registration.R
 import com.example.feature.registration.RegistrationActivity
 import com.example.feature.registration.RegistrationViewModel
-import dagger.android.support.DaggerFragment
-import javax.inject.Inject
+import dagger.hilt.android.AndroidEntryPoint
 
-class TermsAndConditionsFragment : DaggerFragment() {
+@AndroidEntryPoint
+class TermsAndConditionsFragment : Fragment() {
 
-    // @Inject annotated fields will be provided by Dagger
-    @Inject
-    lateinit var registrationViewModel: RegistrationViewModel
+    private val registrationViewModel: RegistrationViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
