@@ -2,6 +2,7 @@ package com.example.core.common.di
 
 import com.example.core.common.di.module.CoreModule
 import com.example.core.common.di.module.StorageModule
+import com.example.core.common.helper.ResourceHelper
 import com.example.core.common.storage.Storage
 import com.example.core.common.user.UserManager
 import dagger.Component
@@ -20,4 +21,5 @@ interface CoreComponent {
 
     fun storage(): Storage
     fun userManager(): UserManager
+    fun resourceHelper(): ResourceHelper
 }

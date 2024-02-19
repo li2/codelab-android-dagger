@@ -2,6 +2,7 @@
 package com.example.android.dagger.main;
 
 import com.example.android.dagger.user.UserDataRepository;
+import com.example.core.common.helper.ResourceHelper;
 import dagger.internal.DaggerGenerated;
 import dagger.internal.Factory;
 import javax.inject.Provider;
@@ -14,21 +15,27 @@ import javax.inject.Provider;
 public final class MainViewModel_Factory implements Factory<MainViewModel> {
   private final Provider<UserDataRepository> userDataRepositoryProvider;
 
-  public MainViewModel_Factory(Provider<UserDataRepository> userDataRepositoryProvider) {
+  private final Provider<ResourceHelper> resourceHelperProvider;
+
+  public MainViewModel_Factory(Provider<UserDataRepository> userDataRepositoryProvider,
+      Provider<ResourceHelper> resourceHelperProvider) {
     this.userDataRepositoryProvider = userDataRepositoryProvider;
+    this.resourceHelperProvider = resourceHelperProvider;
   }
 
   @Override
   public MainViewModel get() {
-    return newInstance(userDataRepositoryProvider.get());
+    return newInstance(userDataRepositoryProvider.get(), resourceHelperProvider.get());
   }
 
   public static MainViewModel_Factory create(
-      Provider<UserDataRepository> userDataRepositoryProvider) {
-    return new MainViewModel_Factory(userDataRepositoryProvider);
+      Provider<UserDataRepository> userDataRepositoryProvider,
+      Provider<ResourceHelper> resourceHelperProvider) {
+    return new MainViewModel_Factory(userDataRepositoryProvider, resourceHelperProvider);
   }
 
-  public static MainViewModel newInstance(UserDataRepository userDataRepository) {
-    return new MainViewModel(userDataRepository);
+  public static MainViewModel newInstance(UserDataRepository userDataRepository,
+      ResourceHelper resourceHelper) {
+    return new MainViewModel(userDataRepository, resourceHelper);
   }
 }
