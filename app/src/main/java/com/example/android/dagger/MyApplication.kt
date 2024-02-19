@@ -17,6 +17,7 @@
 package com.example.android.dagger
 
 import com.example.android.dagger.di.AppComponent
+import com.example.android.dagger.di.Dagger
 import com.example.android.dagger.di.DaggerAppComponent
 import dagger.android.AndroidInjector
 import dagger.android.DaggerApplication
@@ -27,7 +28,7 @@ class MyApplication : DaggerApplication() {
     val appComponent: AppComponent by lazy {
         // Creates an instance of AppComponent using its Factory constructor
         // We pass the applicationContext that will be used as Context in the graph
-        DaggerAppComponent.factory().create(applicationContext)
+        Dagger.initialize(this)
     }
 
     override fun applicationInjector(): AndroidInjector<out DaggerApplication> {

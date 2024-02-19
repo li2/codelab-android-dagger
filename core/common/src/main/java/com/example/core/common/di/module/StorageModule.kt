@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.core.common.di
+package com.example.core.common.di.module
 
 import com.example.core.common.storage.SharedPreferencesStorage
 import com.example.core.common.storage.Storage

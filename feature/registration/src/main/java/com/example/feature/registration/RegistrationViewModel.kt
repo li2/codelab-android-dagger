@@ -16,7 +16,7 @@
 
 package com.example.feature.registration
 
-import com.example.core.common.di.ActivityScope
+import com.example.core.common.di.scope.ActivityScope
 import com.example.core.common.user.UserManager
 import javax.inject.Inject
 

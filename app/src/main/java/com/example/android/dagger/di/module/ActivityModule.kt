@@ -1,4 +1,4 @@
-package com.example.android.dagger.di
+package com.example.android.dagger.di.module
 
 import com.example.android.dagger.main.MainActivity
 import com.example.android.dagger.settings.SettingsActivity

@@ -1,6 +1,6 @@
 package com.example.feature.registration.di;
 
-import com.example.core.common.di.FragmentScope;
+import com.example.core.common.di.scope.FragmentScope;
 import com.example.feature.registration.termsandconditions.TermsAndConditionsFragment;
 import dagger.Binds;
 import dagger.Module;

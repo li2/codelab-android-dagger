@@ -16,32 +16,33 @@
 
 package com.example.android.dagger.di
 
-import android.content.Context
-import com.example.core.common.di.StorageModule
-import dagger.BindsInstance
+import com.example.android.dagger.di.module.ActivityModule
+import com.example.android.dagger.di.module.ContextModule
+import com.example.core.common.di.scope.AppScope
+import com.example.core.common.di.CoreComponent
 import dagger.Component
 import dagger.android.AndroidInjectionModule
 import dagger.android.AndroidInjector
 import dagger.android.DaggerApplication
-import javax.inject.Singleton
 
 // Scope annotation that the AppComponent uses
 // Classes annotated with @Singleton will have a unique instance in this Component
-@Singleton
+@AppScope
 // Definition of a Dagger component that adds info from the different modules to the graph
 @Component(
     modules = [
         AndroidInjectionModule::class, // to ensure that all bindings necessary for these base types are available.
         ActivityModule::class,
-        StorageModule::class,
-    ]
+        ContextModule::class,
+    ],
+    dependencies = [CoreComponent::class],
 )
-interface AppComponent: AndroidInjector<DaggerApplication> {
+interface AppComponent : AndroidInjector<DaggerApplication> {
 
-    // Factory to create instances of the AppComponent
-    @Component.Factory
-    interface Factory {
-        // With @BindsInstance, the Context passed in will be available in the graph
-        fun create(@BindsInstance context: Context): AppComponent
+    @Component.Builder
+    interface Builder {
+        fun contextModule(contextModule: ContextModule): Builder
+        fun coreComponent(coreComponent: CoreComponent): Builder
+        fun build(): AppComponent
     }
 }
