@@ -22,11 +22,13 @@ import android.widget.Button
 import android.widget.TextView
 import com.example.android.dagger.R
 import com.example.android.dagger.settings.SettingsActivity
+import com.example.core.common.logger.Logger
 import com.example.core.common.user.UserManager
 import com.example.feature.login.LoginActivity
 import com.example.feature.registration.RegistrationActivity
 import dagger.android.support.DaggerAppCompatActivity
 import javax.inject.Inject
+import kotlin.math.log
 
 class MainActivity : DaggerAppCompatActivity() {
 
@@ -37,6 +39,9 @@ class MainActivity : DaggerAppCompatActivity() {
     @Inject
     lateinit var userManager: UserManager
 
+    @Inject
+    lateinit var logger: Logger
+
     /**
      * If the User is not registered, RegistrationActivity will be launched,
      * If the User is not logged in, LoginActivity will be launched,
@@ -44,6 +49,7 @@ class MainActivity : DaggerAppCompatActivity() {
      */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        logger.d("onCreate")
 
         // Grabs instance of UserManager from the application graph
         if (!userManager.isUserLoggedIn()) {
