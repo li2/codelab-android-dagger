@@ -2,6 +2,8 @@ package com.example.core.common.di.module
 
 import android.content.Context
 import com.example.core.common.helper.ResourceHelper
+import com.example.core.common.logger.DefaultLogger
+import com.example.core.common.logger.Logger
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -18,4 +20,8 @@ class CoreModule(
     @Provides
     @Singleton
     fun providesResourceHelper(): ResourceHelper = resourceHelper
+
+    @Provides
+    @Singleton
+    fun providesLogger(): Logger = DefaultLogger(context)
 }
