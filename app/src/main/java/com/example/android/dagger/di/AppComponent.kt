@@ -18,6 +18,7 @@ package com.example.android.dagger.di
 
 import com.example.android.dagger.di.module.ActivityModule
 import com.example.android.dagger.di.module.ContextModule
+import com.example.android.dagger.helper.BaseTaskInjector
 import com.example.core.common.di.scope.AppScope
 import com.example.core.common.di.CoreComponent
 import dagger.Component
@@ -45,4 +46,6 @@ interface AppComponent : AndroidInjector<DaggerApplication> {
         fun coreComponent(coreComponent: CoreComponent): Builder
         fun build(): AppComponent
     }
+
+    fun inject(baseTaskInjector: BaseTaskInjector)
 }
