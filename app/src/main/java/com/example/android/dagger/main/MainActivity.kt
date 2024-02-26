@@ -20,6 +20,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import com.example.android.dagger.R
 import com.example.android.dagger.helper.SampleTask
 import com.example.android.dagger.settings.SettingsActivity
@@ -28,9 +29,12 @@ import com.example.core.common.user.UserManager
 import com.example.feature.login.LoginActivity
 import com.example.feature.registration.RegistrationActivity
 import dagger.android.support.DaggerAppCompatActivity
+import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
-class MainActivity : DaggerAppCompatActivity() {
+// Hilt migration: @AndroidEntryPoint and remove extend from DaggerAppCompatActivity
+@AndroidEntryPoint
+class MainActivity : AppCompatActivity() {
 
     // @Inject annotated fields will be provided by Dagger
     @Inject

@@ -16,16 +16,7 @@
 
 package com.example.android.dagger.di
 
-import com.example.android.dagger.di.module.ActivityModule
-import com.example.android.dagger.di.module.ContextModule
-import com.example.android.dagger.helper.BaseTaskInjector
-import com.example.core.common.di.scope.AppScope
-import com.example.core.common.di.CoreComponent
-import dagger.Component
-import dagger.android.AndroidInjectionModule
-import dagger.android.AndroidInjector
-import dagger.android.DaggerApplication
-
+/*
 // Scope annotation that the AppComponent uses
 // Classes annotated with @Singleton will have a unique instance in this Component
 @AppScope
@@ -33,9 +24,12 @@ import dagger.android.DaggerApplication
 @Component(
     modules = [
         AndroidInjectionModule::class, // to ensure that all bindings necessary for these base types are available.
+        // Hilt migration: migrated via @AndroidEntryPoint
         ActivityModule::class,
+        // Hilt migration: migrated via @ApplicationContext
         ContextModule::class,
     ],
+    // Hilt migration: migrated via predefined SingletonComponent
     dependencies = [CoreComponent::class],
 )
 interface AppComponent : AndroidInjector<DaggerApplication> {
@@ -47,5 +41,7 @@ interface AppComponent : AndroidInjector<DaggerApplication> {
         fun build(): AppComponent
     }
 
+    // Hilt migration: migrated via EntryPoint
     fun inject(baseTaskInjector: BaseTaskInjector)
 }
+*/

@@ -19,12 +19,15 @@ import com.example.core.common.storage.SharedPreferencesStorage
 import com.example.core.common.storage.Storage
 import dagger.Binds
 import dagger.Module
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 
 // Tells Dagger this is a Dagger module
 @Module
+@InstallIn(SingletonComponent::class)
 abstract class StorageModule {
 
     // Makes Dagger provide SharedPreferencesStorage when a Storage type is requested
     @Binds
-    abstract fun provideStorage(storage: SharedPreferencesStorage): Storage
+    abstract fun bindsStorage(storage: SharedPreferencesStorage): Storage
 }

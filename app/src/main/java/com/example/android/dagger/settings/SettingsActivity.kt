@@ -19,13 +19,17 @@ package com.example.android.dagger.settings
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
 import com.example.android.dagger.R
 import com.example.core.common.user.UserManager
 import com.example.feature.login.LoginActivity
 import dagger.android.support.DaggerAppCompatActivity
+import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
-class SettingsActivity : DaggerAppCompatActivity() {
+// Hilt migration: @AndroidEntryPoint and remove extend from DaggerAppCompatActivity
+@AndroidEntryPoint
+class SettingsActivity : AppCompatActivity() {
 
     // @Inject annotated fields will be provided by Dagger
     @Inject

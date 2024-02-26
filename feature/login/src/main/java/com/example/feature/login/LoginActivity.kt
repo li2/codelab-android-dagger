@@ -22,12 +22,14 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.Observer
-import dagger.android.support.DaggerAppCompatActivity
+import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
-class LoginActivity : DaggerAppCompatActivity() {
+@AndroidEntryPoint
+class LoginActivity : AppCompatActivity() {
 
     // @Inject annotated fields will be provided by Dagger
     @Inject
